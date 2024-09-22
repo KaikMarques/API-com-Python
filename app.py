@@ -1,21 +1,30 @@
-# Para se criar uma API precisamos pensar em 4 etapas principais
+from flask import Flask, jsonify, request
 
-# 1. Objetivo
-# 2. URL Base
-# 3. Endpoints
-# 4. Quais recursos?
+app = Flask(__name__)
 
+livros = [
+  {
+    'id':1,
+    'título': 'O Senhor dos Anéis - A Sociedade do Anel',
+    'autor': 'J.R.R Tolkien'
+  },
+  {
+    'id':2,
+    'título': 'Harry Potter e a Pedra Filosofal',
+    'autor': 'J.K Howling'
+  },
+  {
+    'id':3,
+    'título': 'James Clear',
+    'autor': 'Hábitos Atômicos'
+  }
+]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Concultar(todos)
+@app.route('/livros')
+def obter_livros():
+  return jsonify(livros)
+# Concultar(id)
+# Editar
+# Excluir
+app.run(port=5000,host='localhost',debug=True)
